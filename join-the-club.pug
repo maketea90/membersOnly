@@ -1,0 +1,28 @@
+//- <!-- <!DOCTYPE html>
+//- <html lang="en">
+//- <head>
+//-     <meta charset="UTF-8">
+//-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//-     <title>Document</title>
+//- </head>
+//- <body>
+//-     <h1>join the club</h1>
+//-     <p>to join the club please enter the clubhouse password:</p>
+//-     <form method="POST" action="">
+//-         <label for="clubhousePassword">enter the password:</label>
+//-         <input name="clubhousePassword" type="password"/>
+//-         <button>join</button>
+//-     </form>
+//- </body>
+//- </html> -->
+
+extends layout 
+
+block content 
+  
+  h1 join the club 
+  p to join the club please enter the clubhouse password 
+  form(method='POST' action='')
+    label(for='clubhousePassword') enter the password 
+    input(name='clubhousePassword' type='password')
+    button join

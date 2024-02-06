@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h1=title 
+    p are you sure you want to delete the following message?
+    span #{message.text}
+        form(method='POST')
+          input(type='hidden' name='messageid' value=message._id)
+          button(type='submit') delete

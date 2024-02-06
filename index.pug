@@ -1,0 +1,70 @@
+//- <!DOCTYPE html>
+//- <html lang="en">
+//- <head>
+//-     <meta charset="UTF-8">
+//-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//-     <title>Document</title>
+//- </head>
+//- <body>
+//-     <% if (user) {%>
+//-         <h1>WELCOME BACK <%= user.username %></h1>
+//-         <a href="/log-out">LOG OUT</a>
+//-         <a href="/create-message">create message</a>
+//-     <% } else { %>
+//-         <h1>please log in</h1>
+//-         <form action="/log-in" method="POST">
+//-           <label for="username">Username</label>
+//-           <input name="username" placeholder="username" type="text" />
+//-           <label for="password">Password</label>
+//-           <input name="password" type="password" />
+//-           <button>Log In</button>
+//-         </form>
+//-     <% } %>
+//- </body>
+//- </html>
+
+extends layout 
+
+block content 
+  if user
+    h1 welcome back  #{user.username}
+    a(href='/log-out') log out
+    br
+    a(href='/create-message') create message page 
+
+    if user.membership 
+      each user in users 
+        if user.messages.length 
+          ul
+          each message in user.messages 
+            h4 author - #{user.first_name} #{user.last_name}
+            h4 date: #{message.timestamp}
+            li #{message.text}
+
+    else if user.admin
+      each user in users 
+        if user.messages.length 
+          ul
+          each message in user.messages 
+            h4 author - #{user.first_name} #{user.last_name}
+            h4 date: #{message.timestamp}
+            li #{message.text}
+            a(href=`/delete/${message._id}`) delete
+
+    else
+        ul
+            each message in messages 
+                li=message.text
+
+  else 
+    h1 please log in 
+    form(action='/log-in' method='POST')
+      label(for='username') username: 
+      input(name='username' placeholder='username' type='text')
+      label(for='password') password: 
+      input(name='password' type='password')
+      button log in 
+
+    ul
+    each message in messages 
+      li=message.text

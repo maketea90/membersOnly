@@ -1,0 +1,26 @@
+//- <!DOCTYPE html>
+//- <html lang="en">
+//- <head>
+//-     <meta charset="UTF-8">
+//-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//-     <title>Document</title>
+//- </head>
+//- <body>
+//-       <textarea name="message" form="messageForm">create a message...</textarea>
+//-       <form action='' method="POST" id="messageForm">
+//-         <label for="title">title:</label>
+//-         <input type="text" name="title"/>
+//-         <button>submit</button>
+//-       </form>
+//- </body>
+//- </html>
+
+extends layout 
+
+block content 
+
+    textarea(name='message' form='messageForm') create a message 
+    form(action='' method='POST' id='messageForm')
+      label(for='title') title: 
+      input(type='text' name='title')
+      button submit
